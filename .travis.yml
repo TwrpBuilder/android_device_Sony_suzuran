@@ -31,4 +31,4 @@ deploy:
   on:
     tags: false
     repo: TwrpBuilder/android_device_Sony_suzuran
-    branch: master
+    branch: android-5.1
