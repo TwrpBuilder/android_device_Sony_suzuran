@@ -14,13 +14,9 @@
 # limitations under the License.
 #
 
-/boot emmc /dev/block/bootdevice/by-name/boot
-/recovery emmc /dev/block/bootdevice/by-name/FOTAKernel
-/system ext4 /dev/block/bootdevice/by-name/system
-/data ext4 /dev/block/bootdevice/by-name/userdata
-/cache ext4 /dev/block/bootdevice/by-name/cache
-/persistent emmc /dev/block/bootdevice/by-name/config       
-/misc emmc /dev/block/bootdevice/by-name/misc
-/firmware vfat /dev/block/bootdevice/by-name/modem
-/persist ext4 /dev/block/bootdevice/by-name/persist 
-/sdcard vfat /dev/block/mmcblk1p1 /dev/block/mmcblk1 flags=display="Micro SD";storage;wipeingui;removable;settingsstorage
+# Kernel
+TARGET_PREBUILT_KERNEL := device/Sony/suzuran/kernel
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 lpm_levels.sleep_disabled=1 boot_cpus=0-5 msm_rtb.filter=0x3F ehci-hcd.park=3 dwc3.maximum_speed=high dwc3_msm.prop_chg_detect=Y coherent_pool=8M sched_enable_power_aware=1 user_debug=31 androidboot.hardware=suzuran buildvariant=userdebug androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
