@@ -23,13 +23,7 @@ TARGET_BOOTLOADER_BOARD_NAME := suzuran
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 15810560 
 BOARD_FLASH_BLOCK_SIZE := 1000000
-
-
-# Kernel
-TARGET_PREBUILT_KERNEL := device/Sony/suzuran/kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 lpm_levels.sleep_disabled=1 boot_cpus=0-5 msm_rtb.filter=0x3F ehci-hcd.park=3 dwc3.maximum_speed=high dwc3_msm.prop_chg_detect=Y coherent_pool=8M sched_enable_power_aware=1 user_debug=31 androidboot.hardware=suzuran buildvariant=userdebug androidboot.selinux=permissive
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
-
-include device/generic/twrpbuilder/BoardConfig64.mk
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_EXCLUDE_SUPERSU := true
+include $(LOCAL_PATH)/kernel.mk
+include device/generic/twrpbuilder/BoardConfig32.mk
